@@ -1,0 +1,20 @@
+Maria Costin Bogdan -> Tema 2 SO
+333CB
+
+Implementarea se gaseste in cmd.c, nu am fisiere auxiliare.
+
+parse_command = este functia principala, apelata de main. Aici apelez restul functiilor, in functie de comanda.
+parse_simple = este functia care imi executa o comanda simpla.Aici, apelez sanity_check pentru a imi verifica daca comanda este ok.Dupa, verific daca trebuie sa setez o 	             variabila de mediu, uitandu-ma in "s->verb->next_part".Dupa, creez un proces copil.In procesul copil, prima data fac redirectarea daca este nevoie.Verific pe rand 
+             s->out, s->in si s->err pentru a vedea unde trebuie sa fac redirectarea, dupa care apelez functia redirect care imi va creea fisierul in functie de flag, dupa care va duplica descriptorul necesar.Apoi, in functia parse_simple apelez o metoda din familia exec, care imi va copia imaginea comenzii in imaginea procesului, si practic imi va executa comanda necesara.Daca in copil se continua executia(nu a fost copiata imaginea), inseamna ca apelul exec a esuat, drept urmare apelez la stderr string-ul care mi se cerea in enunt si dau EXIT.In procesul parinte execut "cd" daca este necesar si astept procesul copil sa se termine, returnand exit-code-ul necesar.
+
+do_on_pipe = aici am implementat operatia de tip "|".Dupa ce creez pipe-ul, ceea ce fac este sa creez un proces copil.La randul lui, acesta va creea un copil, care va face 
+			citirea din fisier. Parintele acestuia va face operatia de scriere, astfel, ceea ce va scrie parintele va fi stdin pentru copil.In ambii parinti astept copiii sa se termine, dupa care returnez exit-code-ul necesar sau apelez exit in caz de eroare
+
+
+do_in_parallel = aici implementez operatia de tip "&".Aici trebuie sa fac doua operatii in paralel, de aceea creez un proces copil care va face una din operatii, iar parintele 				 cealalta operatie.In parinte astept copil sa se termine, dupa care returnez exit-code-ul necesar.
+
+
+Mentionez ca pe checker imi trec toate testele, mai putin primul test(cel de coding style), nu am avut rabdare :(.
+Multumim pentru schelet, ne-a salvat mult timp. :D
+
+PS: vad ca in gedit readme-ul acesta se vede aiurea din cauza taburilor, sper ca va fi deschis cu sublime.
