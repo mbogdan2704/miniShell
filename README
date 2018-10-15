@@ -1,5 +1,4 @@
-Maria Costin Bogdan -> Tema 2 SO
-333CB
+
 
 Implementarea se gaseste in cmd.c, nu am fisiere auxiliare.
 
@@ -13,8 +12,5 @@ do_on_pipe = aici am implementat operatia de tip "|".Dupa ce creez pipe-ul, ceea
 
 do_in_parallel = aici implementez operatia de tip "&".Aici trebuie sa fac doua operatii in paralel, de aceea creez un proces copil care va face una din operatii, iar parintele 				 cealalta operatie.In parinte astept copil sa se termine, dupa care returnez exit-code-ul necesar.
 
-
-Mentionez ca pe checker imi trec toate testele, mai putin primul test(cel de coding style), nu am avut rabdare :(.
-Multumim pentru schelet, ne-a salvat mult timp. :D
 
 PS: vad ca in gedit readme-ul acesta se vede aiurea din cauza taburilor, sper ca va fi deschis cu sublime.
